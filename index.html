@@ -21,7 +21,19 @@ details[open] .faq-plus{transform:rotate(45deg)}
 .ghost{transition:background-color .25s ease}
 .ghost:hover{background-color:#F4F0FA;color:#2F2B3D}
 a:focus-visible,summary:focus-visible{outline:2px solid #6A4FA3;outline-offset:3px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.ghost,.faq-plus{transition:none}}
+.genres{list-style:none;isolation:isolate;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));max-width:1000px;margin:clamp(40px,5cqw,64px) auto 0;padding:12px 0}
+.genres li{display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;align-self:start;justify-self:center;width:110%;box-sizing:border-box;padding:0 12%;border-radius:50%;mix-blend-mode:multiply;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(18px,2cqw,26px);line-height:1.1;animation:swell 7.2s ease-in-out infinite}
+.genres:hover li{animation-play-state:paused}
+@container (max-width:680px){.genres{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:0}}
+.frame{overflow:hidden;isolation:isolate}
+.drift{animation:drift 22s ease-in-out infinite alternate}
+figure:nth-child(2) .drift{animation-delay:-7s;animation-direction:alternate-reverse}
+figure:nth-child(3) .drift{animation-delay:-14s}
+@keyframes swell{0%,100%{transform:translateY(7px) scale(.98)}50%{transform:translateY(-7px) scale(1.03)}}
+@keyframes drift{from{transform:scale(1.02) translate(-1%,.5%)}to{transform:scale(1.1) translate(1.5%,-1%)}}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){.rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}figure.rise:nth-child(2){animation-range:entry 8% entry 53%}figure.rise:nth-child(3){animation-range:entry 16% entry 61%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.ghost,.faq-plus{transition:none}.genres li,.drift,.rise{animation:none}}
 </style>
 </head>
 <body>
@@ -153,8 +165,8 @@ SAMA</a>
 <p style="margin: 8px 0 0; font-size: 16px; color: #5E5A6E">DJ · live musician · Internal Family Systems (IFS) therapist</p>
 <p style="margin: 20px 0 0">Music has been part of my life since my first guitar at thirteen. College parties brought me to DJing; over time, live instruments and dance became different ways of exploring the same thing: what it feels like to be human.</p>
 <p style="margin: 14px 0 0">Today, my sets bring together guitar, flute, singing, vocal effects and DJing. Live sounds respond to the people in the room, carrying the journey from quiet and tender to playful and expansive, and back again.</p>
-<p style="margin: 14px 0 0">My work with IFS shapes the way I facilitate—with curiosity and care, and a belief that the parts of ourselves we find hardest to welcome deserve space, too.</p>
-<p style="margin: 20px 0 0; padding-top: 16px; border-top: 1px solid #E4D9D4; font-size: 16px; color: #5E5A6E">Joined by guest musicians &amp; facilitators. Other voices and live sounds will become part of the ceremony. Guest details to be announced.</p>
+<p style="margin: 14px 0 0">My work with IFS (Internal Family Systems) shapes the way I facilitate—with curiosity and care, and a belief that the parts of ourselves we find hardest to welcome deserve space, too.</p>
+<p style="margin: 20px 0 0; padding-top: 16px; border-top: 1px solid #E4D9D4; font-size: 16px; color: #5E5A6E">Joined by guest musicians &amp; facilitators. Guest details to be announced.</p>
 </div>
 </div>
 </section>
@@ -166,8 +178,16 @@ SAMA</a>
 <h2 style="margin: 10px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 5cqw, 68px); line-height: 1.06">Multi-genre. <em style="color: #6A4FA3">Many ways to feel.</em></h2>
 </div>
 <div>
-<p style="margin: 0">From house and EDM to funk, reggaeton, Afro rhythms and sounds from around the world, the music follows the emotional journey. Each change of rhythm opens another possibility: playfulness, tenderness, sensuality, joy or release.</p></div>
+<p style="margin: 0">From classical piano to house, EDM, funk, reggaeton, Afro rhythms and sounds from around the world, the music follows the emotional journey. Each change of rhythm opens another possibility: playfulness, tenderness, sensuality, joy or release.</p></div>
 </div>
+<ul class="genres rise" aria-label="Genres">
+<li style="background: #CFC6EC; animation-delay: -0.0s">classical piano</li>
+<li style="background: #BFD9EE; animation-delay: -1.2s">house</li>
+<li style="background: #C6DDC5; animation-delay: -2.4s">EDM</li>
+<li style="background: #F6DDA8; animation-delay: -3.6s">funk</li>
+<li style="background: #F7CDB5; animation-delay: -4.8s">reggaeton</li>
+<li style="background: #F2C3D0; animation-delay: -6.0s">Afro</li>
+</ul>
 <div style="margin-top: clamp(56px, 7cqw, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 24px clamp(40px, 7cqw, 96px)">
 <div>
 <p style="margin: 0; font-size: 15px; font-weight: 500; color: #6A4FA3">Musicians in the room · Music in the moment</p>
@@ -176,13 +196,13 @@ SAMA</a>
 <p style="margin: 0">The breath of a flute, the warmth of a voice, the energy of strings: live music brings a human presence to the room. Musicians respond to the dancers, letting the sound soften, deepen or become more playful as the journey unfolds.</p>
 </div>
 <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px">
-<figure style="margin: 0"><img src="assets/collab-vocal-guitar.webp" alt="A vocalist singing while Sasha plays guitar beside his live mixing equipment" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px"><figcaption style="margin-top: 8px; font-size: 16px">Voice, guitar &amp; live mixing</figcaption></figure>
-<figure style="margin: 0"><img src="assets/collab-sax-guitar.webp" alt="Sasha playing electric guitar alongside a saxophonist, with the DJ equipment in front of them" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px"><figcaption style="margin-top: 8px; font-size: 16px">Saxophone &amp; guitar</figcaption></figure>
-<figure style="margin: 0"><img src="assets/collab-violin.webp" alt="A violinist and guitarist playing together beside a DJ setup" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px"><figcaption style="margin-top: 8px; font-size: 16px">Violin &amp; guitar</figcaption></figure>
+<figure class="rise" style="margin: 0"><div class="frame" style="border-radius: 20px"><img class="drift" src="assets/collab-vocal-guitar.webp" alt="A vocalist singing while Sasha plays guitar beside his live mixing equipment" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div><figcaption style="margin-top: 8px; font-size: 16px">Voice, guitar &amp; live mixing</figcaption></figure>
+<figure class="rise" style="margin: 0"><div class="frame" style="border-radius: 20px"><img class="drift" src="assets/collab-sax-guitar.webp" alt="Sasha playing electric guitar alongside a saxophonist, with the DJ equipment in front of them" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div><figcaption style="margin-top: 8px; font-size: 16px">Saxophone &amp; guitar</figcaption></figure>
+<figure class="rise" style="margin: 0"><div class="frame" style="border-radius: 20px"><img class="drift" src="assets/collab-violin.webp" alt="A violinist and guitarist playing together beside a DJ setup" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div><figcaption style="margin-top: 8px; font-size: 16px">Violin &amp; guitar</figcaption></figure>
 </div>
 <p style="margin: 12px 0 0; font-size: 15px; color: #5E5A6E">Past collaborations with saxophone, violin and voice.</p>
 <a href="https://white.sashaxmusic.com/assets/white-journey.mp4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px clamp(24px, 4cqw, 56px); align-items: center; margin-top: clamp(56px, 7cqw, 96px); text-decoration: none">
-<img src="assets/sasha-live-journey.webp" alt="Sasha playing live guitar beside his DJ equipment" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 20px">
+<div class="frame rise" style="border-radius: 20px"><img class="drift" src="assets/sasha-live-journey.webp" alt="Sasha playing live guitar beside his DJ equipment" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"></div>
 <span style="display: block">
 <span style="display: block; font-size: 15px; font-weight: 500; color: #6A4FA3">A feeling for the experience</span>
 <span style="display: block; margin-top: 10px; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(32px, 3.6cqw, 46px); line-height: 1.1">A little glimpse inside.</span>
@@ -200,7 +220,7 @@ SAMA</a>
 <img src="assets/message-sensory-dancing-800.webp" alt="A dancer describes waves of electricity, tears and release during Sasha’s set" style="display: block; width: 100%; height: auto; border-radius: 16px">
 <div style="display: flex; flex-direction: column; gap: 16px">
 <img src="assets/message-closing-set.webp" alt="A dancer describes Sasha’s set as powerful, intense and brimming with emotion, saying it truly moved them" style="display: block; width: 100%; height: auto; border-radius: 16px">
-<img src="assets/message-val.webp" alt="Val describes a night of heart opening, love and joy, and thanks Sasha for his music" style="display: block; width: 100%; height: auto; border-radius: 16px">
+<img src="assets/message-heart-opening.jpg" alt="A dancer describes a night of heart opening, love and joy, and thanks Sasha for the music" style="display: block; width: 100%; height: auto; border-radius: 16px">
 </div>
 </div>
 </section>
