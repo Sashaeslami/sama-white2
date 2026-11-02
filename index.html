@@ -16,11 +16,13 @@ summary{cursor:pointer;list-style:none}
 summary::-webkit-details-marker{display:none}
 details[open] .faq-plus{transform:rotate(45deg)}
 .faq-plus{transition:transform .25s ease}
-.cta{transition:background-color .25s ease}
+.cta{font:inherit;border:0;cursor:pointer;transition:background-color .25s ease}
+.faq-book{font:inherit;color:inherit;padding:0;border:0;background:none;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.faq-book:hover{color:#6A4FA3}
 .cta:hover{background-color:#6A4FA3;color:#FFFFFF}
 .ghost{transition:background-color .25s ease}
 .ghost:hover{background-color:#F4F0FA;color:#2F2B3D}
-a:focus-visible,summary:focus-visible{outline:2px solid #6A4FA3;outline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #6A4FA3;outline-offset:3px}
 .genres{list-style:none;isolation:isolate;display:grid;grid-template-columns:repeat(14,minmax(0,1fr));max-width:1056px;margin:12px auto 0;padding:12px 0}
 .genres li{grid-column:span 2;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;align-self:start;justify-self:center;width:110%;margin-bottom:-23%;box-sizing:border-box;padding:0 16%;border-radius:50%;mix-blend-mode:multiply;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(15px,1.6cqw,22px);line-height:1.1;animation:swell 7.2s ease-in-out infinite}
 .genres li:nth-child(1),.genres li:nth-child(14){grid-column:2/span 2}
@@ -65,7 +67,7 @@ SAMA</a>
 <p style="margin: clamp(16px, 2.4cqw, 32px) 0 0; max-width: 24em; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(28px, 3.2cqw, 42px); line-height: 1.2">From tears to twerking.<br>From stillness to wildness.<br>From letting go to coming alive.<br><em style="color: #6A4FA3">Every emotion has a place on the dance floor.</em></p>
 <p style="margin: 20px 0 0; max-width: 32em">Cacao, live music, free movement and gentle somatic release. Space for every part of you.</p>
 <p style="margin: 6px 0 0; font-size: 16px; color: #5E5A6E">With Sasha X + guest musicians &amp; facilitators</p>
-<a class="cta" href="https://sasha-x-events.sasha-eslami.chatgpt.site/events/sama" style="display: inline-flex; align-items: center; min-height: 54px; margin-top: 28px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</a>
+<form id="hero-checkout" data-ticket-form method="post" action="https://sasha-x-events.sasha-eslami.chatgpt.site/api/checkout/sama" style="display:contents"><button type="submit" class="cta" style="display: inline-flex; align-items: center; min-height: 54px; margin-top: 28px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</button></form>
 <p style="margin: 12px 0 0; font-size: 16px; color: #5E5A6E">Limited capacity</p>
 </section>
 
@@ -267,7 +269,7 @@ SAMA</a>
 </details>
 <details style="border-top: 1px solid #D9D5E3; border-bottom: 1px solid #D9D5E3">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; font-family: 'Instrument Serif', Georgia, serif; font-size: 24px; line-height: 1.2">When, where, and how do I book?<span class="faq-plus" aria-hidden="true" style="flex: none; font-size: 26px; color: #6A4FA3">+</span></summary>
-<p style="margin: 0 0 20px">Saturday, November 14, 2026, 10:45 a.m. to 1 p.m.-ish Bali time, at <a href="https://www.google.com/maps/search/?api=1&amp;query=The+IN+Movement%2C+Nyuh+Kuning%2C+Bali">InMovement in Ubud ↗</a>. View the tiers on the <a href="https://sasha-x-events.sasha-eslami.chatgpt.site/events/sama">SAMA ticket page</a>.</p>
+<p style="margin: 0 0 20px">Saturday, November 14, 2026, 10:45 a.m. to 1 p.m.-ish Bali time, at <a href="https://www.google.com/maps/search/?api=1&amp;query=The+IN+Movement%2C+Nyuh+Kuning%2C+Bali">InMovement in Ubud ↗</a>. <button type="submit" form="hero-checkout" class="faq-book">Reserve your spot</button> to see the current ticket price and pay securely on Stripe.</p>
 </details>
 </div>
 </section>
@@ -278,7 +280,7 @@ SAMA</a>
 <p style="margin: 18px auto 0; max-width: 34em">That’s the hope. A deeper connection, a feeling welcomed, a little more kindness toward yourself.</p>
 <p style="margin: 14px 0 0; font-size: 16px; color: #5E5A6E">November 14 · 10:45 a.m. to 1 p.m.-ish Bali time · <a href="https://www.google.com/maps/search/?api=1&amp;query=The+IN+Movement%2C+Nyuh+Kuning%2C+Bali">InMovement, Ubud ↗</a></p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; margin-top: 28px">
-<a class="cta" href="https://sasha-x-events.sasha-eslami.chatgpt.site/events/sama" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</a>
+<form data-ticket-form method="post" action="https://sasha-x-events.sasha-eslami.chatgpt.site/api/checkout/sama" style="display:contents"><button type="submit" class="cta" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</button></form>
 <a class="ghost" href="https://www.instagram.com/sasha_x_music/" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1px solid #2F2B3D; font-weight: 500; text-decoration: none">Ask Sasha on Instagram ↗</a>
 </div>
 <p style="margin: 12px 0 0; font-size: 16px; color: #5E5A6E">Limited capacity</p>
@@ -291,5 +293,22 @@ SAMA</a>
 <a href="#top" style="min-height: 44px; display: inline-flex; align-items: center">Back to the beginning ↑</a>
 </footer>
 </div>
+
+<script>
+(() => {
+  const forms = [...document.querySelectorAll('form[data-ticket-form]')];
+  const referral = new URLSearchParams(location.search).get('ref')?.trim().toUpperCase();
+  const attempt = Array.from(crypto.getRandomValues(new Uint8Array(32)), byte => byte.toString(16).padStart(2, '0')).join('');
+  for (const form of forms) {
+    for (const [name, value] of [['attempt', attempt], ['ref', referral && /^[A-Z0-9][A-Z0-9_-]{2,31}$/.test(referral) ? referral : '']]) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.append(input);
+    }
+  }
+})();
+</script>
 </body>
 </html>
