@@ -38,6 +38,7 @@ figure:nth-child(3) .drift{animation-delay:-14s}
 @supports (animation-timeline:view()){.rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}figure.rise:nth-child(2){animation-range:entry 8% entry 53%}figure.rise:nth-child(3){animation-range:entry 16% entry 61%}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.ghost,.faq-plus{transition:none}.genres li,.drift,.rise{animation:none}}
 </style>
+<script src="checkout.js" defer></script>
 </head>
 <body>
 <div style="container-type: inline-size; font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #2F2B3D; background: #FDFCFE; font-size: 18px; line-height: 1.65; overflow-x: clip">
@@ -65,8 +66,7 @@ SAMA</a>
 <p style="margin: clamp(16px, 2.4cqw, 32px) 0 0; max-width: 24em; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(28px, 3.2cqw, 42px); line-height: 1.2">From tears to twerking.<br>From stillness to wildness.<br>From letting go to coming alive.<br><em style="color: #6A4FA3">Every emotion has a place on the dance floor.</em></p>
 <p style="margin: 20px 0 0; max-width: 32em">Cacao, live music, free movement and gentle somatic release. Space for every part of you.</p>
 <p style="margin: 6px 0 0; font-size: 16px; color: #5E5A6E">With Sasha X + guest musicians &amp; facilitators</p>
-<a class="cta" href="https://sasha-x-events.sasha-eslami.chatgpt.site/events/sama" style="display: inline-flex; align-items: center; min-height: 54px; margin-top: 28px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</a>
-<p style="margin: 12px 0 0; font-size: 16px; color: #5E5A6E">Limited capacity</p>
+<form data-ticket-form method="post" action="https://sasha-x-events.sasha-eslami.chatgpt.site/api/checkout/sama" style="display: flex; flex-direction: column; align-items: center; margin-top: 28px"><input type="hidden" name="attempt"><button class="cta" type="submit" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border: 0; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font: inherit; font-weight: 500; cursor: pointer">Reserve Your Spot</button><p style="margin: 12px 0 0; font-size: 16px; color: #5E5A6E">Limited capacity</p><details style="margin-top: 4px; font-size: 15px; color: #5E5A6E"><summary style="display: flex; align-items: center; justify-content: center; min-height: 44px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em">Have an ambassador code?</summary><label style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px">Ambassador code <input name="ref" autocomplete="off" maxlength="32" style="width: 11em; min-height: 44px; padding: 0 16px; border: 1px solid #D9D5E3; border-radius: 999px; background: #FFFFFF; color: #2F2B3D; font: inherit; text-transform: uppercase"></label></details></form>
 </section>
 
 <section style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 7cqw, 96px) clamp(20px, 5cqw, 72px) 0">
@@ -278,7 +278,7 @@ SAMA</a>
 <p style="margin: 18px auto 0; max-width: 34em">That’s the hope. A deeper connection, a feeling welcomed, a little more kindness toward yourself.</p>
 <p style="margin: 14px 0 0; font-size: 16px; color: #5E5A6E">November 14 · 10:45 a.m. to 1 p.m.-ish Bali time · <a href="https://www.google.com/maps/search/?api=1&amp;query=The+IN+Movement%2C+Nyuh+Kuning%2C+Bali">InMovement, Ubud ↗</a></p>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; margin-top: 28px">
-<a class="cta" href="https://sasha-x-events.sasha-eslami.chatgpt.site/events/sama" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font-weight: 500; text-decoration: none">Reserve Your Spot</a>
+<form data-ticket-form method="post" action="https://sasha-x-events.sasha-eslami.chatgpt.site/api/checkout/sama" style="margin: 0"><input type="hidden" name="attempt"><input type="hidden" name="ref"><button class="cta" type="submit" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border: 0; border-radius: 999px; background: #2F2B3D; color: #FFFFFF; font: inherit; font-weight: 500; cursor: pointer">Reserve Your Spot</button></form>
 <a class="ghost" href="https://www.instagram.com/sasha_x_music/" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1px solid #2F2B3D; font-weight: 500; text-decoration: none">Ask Sasha on Instagram ↗</a>
 </div>
 <p style="margin: 12px 0 0; font-size: 16px; color: #5E5A6E">Limited capacity</p>
