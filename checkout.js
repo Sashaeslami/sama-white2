@@ -17,3 +17,26 @@ for (const form of forms) {
     form.elements.namedItem('ref').value = code;
   });
 }
+
+// Show the tier on sale right now, its price and places left, read live from the ticketing site.
+// If it can't be reached, the line simply stays as "Limited capacity".
+(async () => {
+  const spots = document.querySelectorAll('[data-price-now]');
+  if (!spots.length) return;
+  try {
+    const response = await fetch('https://tickets.samatopia.com/api/events/sama', { cache: 'no-store' });
+    if (!response.ok) return;
+    const { event } = await response.json();
+    const now = Date.now();
+    const tiers = [...(event.tiers || [])].sort((a, b) => a.position - b.position);
+    const open = tiers.find(t => (t.closeMode === 'quantity' || now < Date.parse(t.deadline)) && (t.quota == null || (t.sold || 0) + (t.held || 0) < t.quota));
+    const price = (value) => 'Rp ' + Number(value).toLocaleString('id-ID');
+    let text;
+    if (!open) text = 'All releases are spoken for right now · ';
+    else {
+      const left = open.quota == null ? null : open.quota - (open.sold || 0) - (open.held || 0);
+      text = `${open.name} · ${price(open.price)}${left !== null && left <= 10 ? ` · only ${left} left` : ''} · `;
+    }
+    spots.forEach(spot => { spot.textContent = text; });
+  } catch { /* keep the static text */ }
+})();
