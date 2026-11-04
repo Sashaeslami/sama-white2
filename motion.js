@@ -17,6 +17,19 @@
     typer.observe(quote);
   }
 
+  // Genre circles pop in one after another the first time they come into view.
+  const genres = document.querySelector('.genres');
+  if (genres) {
+    genres.classList.add('armed');
+    const popper = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      genres.classList.remove('armed');
+      setTimeout(() => genres.classList.add('settled'), 2200);
+      popper.disconnect();
+    }, { threshold: 0.2 });
+    popper.observe(genres);
+  }
+
   // Scroll reveals for browsers without CSS scroll-driven animations (Firefox, older Safari).
   // Modern browsers do these in CSS, so the rest is skipped there.
   if (CSS.supports('animation-timeline: view()')) return;

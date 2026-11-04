@@ -22,17 +22,25 @@ details[open] .faq-plus{transform:rotate(45deg)}
 .ghost:hover{background-color:#F4F0FA;color:#2F2B3D}
 a:focus-visible,summary:focus-visible{outline:2px solid #6A4FA3;outline-offset:3px}
 .genres{list-style:none;isolation:isolate;display:grid;grid-template-columns:repeat(14,minmax(0,1fr));max-width:1056px;margin:12px auto 0;padding:12px 0}
-.genres li{grid-column:span 2;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;align-self:start;justify-self:center;width:110%;margin-bottom:-23%;box-sizing:border-box;padding:0 16%;border-radius:50%;mix-blend-mode:multiply;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(15px,1.6cqw,22px);line-height:1.1;animation:swell 7.2s ease-in-out infinite}
+.genres li{grid-column:span 2;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;align-self:start;justify-self:center;width:110%;margin-bottom:-23%;box-sizing:border-box;padding:0 16%;border-radius:50%;mix-blend-mode:multiply;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(15px,1.6cqw,22px);line-height:1.1;position:relative;animation:float-a 7s ease-in-out infinite,beat 3.4s cubic-bezier(.3,.7,.3,1) calc(1.4s + var(--i)*.15s) infinite;transition:transform .9s cubic-bezier(.34,1.56,.64,1) calc(var(--i)*55ms)}
 .genres li:nth-child(1),.genres li:nth-child(14){grid-column:2/span 2}
 .genres li:nth-child(7){grid-column:1/span 2}
-.genres li.genre-more{border:1px dashed #6A4FA3;color:#6A4FA3}
-.genres:hover li{animation-play-state:paused}
+.genres li:nth-child(3n+2){animation-name:float-b,beat;animation-duration:8.6s,3.4s}
+.genres li:nth-child(3n){animation-name:float-c,beat;animation-duration:6.2s,3.4s}
+.genres li.genre-more{color:#6A4FA3}
+.genres li.genre-more::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed #6A4FA3;animation:turn 16s linear infinite}
+.genres.armed li{transform:scale(0) rotate(-25deg)}
+.genres.settled li{transition-delay:0s}
+.genres li:hover{z-index:2;transform:scale(1.16);transition-duration:.45s;transition-delay:0s}
+@keyframes float-a{0%,100%{translate:0 5px}50%{translate:0 -7px}}
+@keyframes float-b{0%,100%{translate:-4px 0}33%{translate:4px -6px}66%{translate:2px 5px}}
+@keyframes float-c{0%,100%{translate:4px -3px}50%{translate:-5px 6px}}
+@keyframes beat{0%,100%{scale:1;opacity:.84}7%{scale:1.1;opacity:1}20%{scale:.97;opacity:.95}34%{scale:1;opacity:.84}}
 @container (max-width:680px){.genres{grid-template-columns:repeat(8,minmax(0,1fr))}.genres li,.genres li:nth-child(1),.genres li:nth-child(7),.genres li:nth-child(14){grid-column:span 2}.genres li{padding:0 12%}.genres li:nth-child(5),.genres li:nth-child(12){grid-column:2/span 2}.genres li:nth-child(8),.genres li:nth-child(15){grid-column:1/span 2}.genres li:nth-child(19){grid-column:4/span 2}}
 .frame{overflow:hidden;isolation:isolate}
 .drift{animation:drift 22s ease-in-out infinite alternate}
 figure:nth-child(2) .drift{animation-delay:-7s;animation-direction:alternate-reverse}
 figure:nth-child(3) .drift{animation-delay:-14s}
-@keyframes swell{0%,100%{transform:translateY(5px) scale(.98)}50%{transform:translateY(-5px) scale(1.03)}}
 @keyframes drift{from{transform:scale(1.02) translate(-1%,.5%)}to{transform:scale(1.1) translate(1.5%,-1%)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @supports (animation-timeline:view()){.rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}figure.rise:nth-child(2){animation-range:entry 8% entry 53%}figure.rise:nth-child(3){animation-range:entry 16% entry 61%}}
@@ -105,7 +113,7 @@ a:hover .logo-mark{transform:rotate(60deg)}
 .no-sdt .grow{opacity:0;transform:scale(.4);transition:opacity .9s ease,transform 1.1s cubic-bezier(.2,.75,.15,1)}
 .no-sdt .in{opacity:1!important;transform:none!important}
 @media (max-width:600px){.hero-orb{display:none}.cta-wrap::before{filter:blur(8px)}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.ghost,.faq-plus,.logo-mark{transition:none}.genres li,.drift,.rise,.progress,.hero-orb,.bloom,.petal,.letters span,.lift,.cta-wrap::before,.cta-wrap::after,.marquee-track,.feel-dot,.pulse,.spin,.grow,.feelings li,.typed .w,.typed .spark::after,.typed .caret,.qmark{animation:none!important}.cta-wrap::after{display:none}.no-sdt .rise,.no-sdt .grow,.no-sdt .feelings li{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta,.ghost,.faq-plus,.logo-mark{transition:none}.genres li,.drift,.rise,.progress,.hero-orb,.bloom,.petal,.letters span,.lift,.cta-wrap::before,.cta-wrap::after,.marquee-track,.feel-dot,.pulse,.spin,.grow,.feelings li,.typed .w,.typed .spark::after,.typed .caret,.qmark,.genres li::before{animation:none!important}.genres li,.genres.armed li{transform:none;transition:none}.cta-wrap::after{display:none}.no-sdt .rise,.no-sdt .grow,.no-sdt .feelings li{opacity:1;transform:none;transition:none}}
 </style>
 <script src="checkout.js" defer></script>
 <script src="motion.js" defer></script>
@@ -255,26 +263,26 @@ SAMA</a>
 <p style="margin: 0">From classical piano to dancehall, EDM, funk, reggaeton, Afro rhythms and sounds from around the world, the music follows the emotional journey. Each change of rhythm opens another possibility: playfulness, tenderness, sensuality, joy or release.</p></div>
 </div>
 <p style="margin: clamp(40px, 5cqw, 64px) 0 0; text-align: center; font-size: 15px; font-weight: 500; color: #6A4FA3">Just a few of the sounds that may come through</p>
-<ul class="genres rise" aria-label="Examples of genres">
-<li style="background: #CFC6EC; animation-delay: -0.0s">classical piano</li>
-<li style="background: #BFD9EE; animation-delay: -0.6s">dancehall</li>
-<li style="background: #C6DDC5; animation-delay: -1.2s">EDM</li>
-<li style="background: #F6DDA8; animation-delay: -1.8s">funk</li>
-<li style="background: #F7CDB5; animation-delay: -2.4s">reggaeton</li>
-<li style="background: #F2C3D0; animation-delay: -3.0s">Afro</li>
-<li style="background: #CFC6EC; animation-delay: -3.6s">ambient</li>
-<li style="background: #BFD9EE; animation-delay: -4.2s">disco</li>
-<li style="background: #C6DDC5; animation-delay: -4.8s">hip hop</li>
-<li style="background: #F6DDA8; animation-delay: -5.4s">Latin</li>
-<li style="background: #F7CDB5; animation-delay: -6.0s">soul</li>
-<li style="background: #F2C3D0; animation-delay: -6.6s">techno</li>
-<li style="background: #CFC6EC; animation-delay: -7.2s">cumbia</li>
-<li style="background: #BFD9EE; animation-delay: -7.8s">Balkan</li>
-<li style="background: #C6DDC5; animation-delay: -8.4s">downtempo</li>
-<li style="background: #F6DDA8; animation-delay: -9.0s">trance</li>
-<li style="background: #F7CDB5; animation-delay: -9.6s">jazz</li>
-<li style="background: #F2C3D0; animation-delay: -10.2s">Middle Eastern</li>
-<li class="genre-more" style="animation-delay: -10.8s">and more…</li>
+<ul class="genres" aria-label="Examples of genres">
+<li style="background: #CFC6EC; --i: 0">classical piano</li>
+<li style="background: #BFD9EE; --i: 1">dancehall</li>
+<li style="background: #C6DDC5; --i: 2">EDM</li>
+<li style="background: #F6DDA8; --i: 3">funk</li>
+<li style="background: #F7CDB5; --i: 4">reggaeton</li>
+<li style="background: #F2C3D0; --i: 5">Afro</li>
+<li style="background: #CFC6EC; --i: 6">ambient</li>
+<li style="background: #BFD9EE; --i: 7">disco</li>
+<li style="background: #C6DDC5; --i: 8">hip hop</li>
+<li style="background: #F6DDA8; --i: 9">Latin</li>
+<li style="background: #F7CDB5; --i: 10">soul</li>
+<li style="background: #F2C3D0; --i: 11">techno</li>
+<li style="background: #CFC6EC; --i: 12">cumbia</li>
+<li style="background: #BFD9EE; --i: 13">Balkan</li>
+<li style="background: #C6DDC5; --i: 14">downtempo</li>
+<li style="background: #F6DDA8; --i: 15">trance</li>
+<li style="background: #F7CDB5; --i: 16">jazz</li>
+<li style="background: #F2C3D0; --i: 17">Middle Eastern</li>
+<li class="genre-more" style="--i: 18">and more…</li>
 </ul>
 <div style="margin-top: clamp(56px, 7cqw, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 24px clamp(40px, 7cqw, 96px)">
 <div class="rise">
