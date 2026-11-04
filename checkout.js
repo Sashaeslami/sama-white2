@@ -1,11 +1,8 @@
 // Reserve buttons post to the ticketing site, which holds a place and redirects to Stripe Checkout.
+// Ambassador links (samatopia.com/?ref=CODE) pass their code along with every Reserve button.
 const forms = [...document.querySelectorAll('form[data-ticket-form]')];
-const codeInput = document.querySelector('form[data-ticket-form] input[name="ref"]:not([type="hidden"])');
-const linkedCode = new URLSearchParams(location.search).get('ref')?.trim().toUpperCase();
-if (codeInput && linkedCode && /^[A-Z0-9][A-Z0-9_-]{2,31}$/.test(linkedCode)) {
-  codeInput.value = linkedCode;
-  codeInput.closest('details').open = true;
-}
+const linkedCode = new URLSearchParams(location.search).get('ref')?.trim().toUpperCase() || '';
+const code = /^[A-Z0-9][A-Z0-9_-]{2,31}$/.test(linkedCode) ? linkedCode : '';
 
 let attempt = '';
 let startedAt = 0;
@@ -17,6 +14,6 @@ for (const form of forms) {
       startedAt = Date.now();
     }
     form.elements.namedItem('attempt').value = attempt;
-    form.elements.namedItem('ref').value = (codeInput?.value || '').trim().toUpperCase();
+    form.elements.namedItem('ref').value = code;
   });
 }
