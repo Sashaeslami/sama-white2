@@ -2,7 +2,7 @@
 // Ambassador links (samatopia.com/?ref=CODE) pass their code along with every Reserve button.
 const forms = [...document.querySelectorAll('form[data-ticket-form]')];
 const linkedCode = new URLSearchParams(location.search).get('ref')?.trim().toUpperCase() || '';
-const code = /^[A-Z0-9][A-Z0-9_-]{2,31}$/.test(linkedCode) ? linkedCode : '';
+const code = /^[A-Z0-9][A-Z0-9-]{2,31}$/.test(linkedCode) ? linkedCode : '';
 
 let attempt = '';
 let startedAt = 0;
