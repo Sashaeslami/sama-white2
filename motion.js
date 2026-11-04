@@ -1,4 +1,20 @@
 (() => {
+  // The past-journey film opens in a player on the page. The video only downloads once someone presses play.
+  const film = document.querySelector('.film-dialog');
+  const video = film?.querySelector('video');
+  if (film && video) {
+    const open = () => {
+      if (typeof film.showModal !== 'function') { location.href = video.currentSrc || video.src; return; }
+      film.showModal();
+      video.play().catch(() => {});
+    };
+    document.querySelectorAll('[data-film]').forEach((button) => button.addEventListener('click', open));
+    film.querySelector('.film-close').addEventListener('click', () => film.close());
+    // A tap on the dark backdrop (outside the video) closes it too.
+    film.addEventListener('click', (event) => { if (event.target === film) film.close(); });
+    film.addEventListener('close', () => video.pause());
+  }
+
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || !('IntersectionObserver' in window)) return;
 
