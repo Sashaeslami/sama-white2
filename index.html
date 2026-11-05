@@ -58,7 +58,9 @@ figure:nth-child(3) .drift{animation-delay:-14s}
 a:hover .logo-mark{transform:rotate(60deg)}
 .hero-orb{position:absolute;z-index:-1;border-radius:50%;pointer-events:none;will-change:transform;animation:orb 26s ease-in-out infinite alternate}
 @keyframes orb{from{transform:translate3d(-6%,-4%,0) scale(1)}to{transform:translate3d(8%,6%,0) scale(1.15)}}
-.bloom{position:absolute;inset:0;isolation:isolate;animation:turn 140s linear infinite}
+.bloom{position:absolute;inset:-12%;isolation:isolate;animation:turn 140s linear infinite}
+@media (max-width:640px){.bloom{inset:-21%}.hero{padding-top:28px!important}.hero>div:first-child{margin-bottom:30px}}
+.hero{overflow-x:clip}
 .petal{position:absolute;width:36.667%;aspect-ratio:1;border-radius:50%;opacity:.7;mix-blend-mode:multiply;will-change:transform;animation:bloom 1.8s cubic-bezier(.2,.75,.15,1) calc(var(--i)*90ms) both,breathe 9s ease-in-out calc(1.8s + var(--i)*90ms) infinite}
 @keyframes bloom{from{opacity:0;transform:translate(calc(var(--x)*-68%),calc(var(--y)*-68%)) scale(.4)}to{opacity:.7;transform:none}}
 @keyframes breathe{0%,100%{transform:none}50%{transform:translate(calc(var(--x)*7%),calc(var(--y)*7%)) scale(1.04)}}
@@ -166,7 +168,7 @@ SAMA</a>
 
 <main id="top">
 
-<section style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 clamp(20px, 5cqw, 72px)">
+<section class="hero" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 clamp(20px, 5cqw, 72px)">
 <div style="position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; width: min(100%, 680px); aspect-ratio: 1 / 1">
 <span class="hero-orb" aria-hidden="true" style="width: 70%; aspect-ratio: 1; left: -38%; top: 6%; background: radial-gradient(closest-side, rgba(207,198,236,.55), rgba(207,198,236,0))"></span>
 <span class="hero-orb" aria-hidden="true" style="width: 64%; aspect-ratio: 1; right: -36%; top: 34%; background: radial-gradient(closest-side, rgba(246,221,168,.5), rgba(246,221,168,0)); animation-delay: -13s"></span>
