@@ -1,4 +1,5 @@
-// Reserve buttons post to the ticketing site, which holds a place and redirects to Stripe Checkout.
+// Reserve buttons post to the ticketing site, which opens the RSVP form (guests pay at the venue).
+// While card payments are paused, there is no online checkout.
 // Ambassador links (samatopia.com/?ref=CODE) pass their code along with every Reserve button.
 const forms = [...document.querySelectorAll('form[data-ticket-form]')];
 const linkedCode = new URLSearchParams(location.search).get('ref')?.trim().toUpperCase() || '';
@@ -35,7 +36,7 @@ for (const form of forms) {
     if (!open) text = 'All releases are spoken for right now · ';
     else {
       const left = open.quota == null ? null : open.quota - (open.sold || 0) - (open.held || 0);
-      text = `${open.name} · ${price(open.price)}${left !== null && left <= 10 ? ` · only ${left} left` : ''} · `;
+      text = `${open.name} · ${price(open.price)}, pay at the venue${left !== null && left <= 10 ? ` · only ${left} left` : ''} · `;
     }
     spots.forEach(spot => { spot.textContent = text; });
   } catch { /* keep the static text */ }
